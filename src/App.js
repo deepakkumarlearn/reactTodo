@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import CreateContextTodo from "./context/CreateContext";
+import AddForm from "./Component/AddForm";
+import {useReducer} from 'react';
+import Reducer from "./context/TodoReducer";
+import Todo from "./Component/Todo";
+
+
 
 function App() {
+  const [todo, dispatch] = useReducer(Reducer,[])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CreateContextTodo.Provider value={{todo, dispatch}}> 
+          <AddForm/>
+          <Todo/>
+    </CreateContextTodo.Provider>
   );
 }
 
